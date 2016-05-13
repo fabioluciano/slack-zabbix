@@ -1,0 +1,22 @@
+{
+  "attachments": [
+    {
+      "username" : "__USERNAME__",
+      "channel" : "__CHANNEL__",
+      "text": "_MSG_",
+      "fields": [
+        {
+          "title": "Servidor",
+          "value": "__SERVER__",
+          "short": true
+        },
+        {
+          "title": "Tipo de Notificação",
+          "value": "__TYPE__",
+          "short": true
+        }
+      ],
+      "color": "__COLOR__"
+    }
+  ]
+}
