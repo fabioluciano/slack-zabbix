@@ -16,7 +16,10 @@ case "${configurations['notification_type']}" in
     configurations[color]='#ff0000'
   ;;
   recovery)
-    configurations[color]='#48b613'
+    configurations[color]='#48B613'
+  ;;
+  alert)
+    configurations[color]='#FDCB12'
   ;;
   *)
     configurations[color]='#d3d3d3'
@@ -26,11 +29,11 @@ esac
 json=$(cat message.json)
 json=$(echo $json | sed 's/__USERNAME__/'${configurations['user_to_use']}'/g')
 json=$(echo $json | sed 's/__CHANNEL__/'${configurations['channel']}'/g')
-json=$(echo $json | sed 's/__SERVER__/'${configurations['server']}'/g')
+json=$(echo $json | sed 's/__SERVER__/'"${configurations['server']}"'/g')
 json=$(echo $json | sed 's/__TYPE__/'${configurations['notification_type']}'/g')
 json=$(echo $json | sed 's/__COLOR__/'${configurations['color']}'/g')
-json=$(echo $json | sed 's/_MSG_/'${configurations['message']}'/g')
+json=$(echo $json | sed 's/_MSG_/'"${configurations['message']}"'/g')
 
-echo "$json"
+# echo "$json"
 
 curl -X "POST" -H 'Content-type: application/json'  --data "$json" ${configurations['webhook']}
